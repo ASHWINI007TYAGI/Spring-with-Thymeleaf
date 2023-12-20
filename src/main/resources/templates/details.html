@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #e44d26; /* Use a different color here */
+            padding-bottom: 8px;
+        }
+
+        dl {
+            margin-top: 20px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #e44d26; /* Use a different color here */
+            margin-top: 10px;
+        }
+
+        dd {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #e44d26; /* Use the same color as dt color here */
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #d44b25; /* Use a slightly darker shade for hover effect */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<h2>Post Details</h2>
+<dl>
+    <dt>Title:</dt>
+    <dd th:text="${post.title}"></dd>
+    <dt>Content:</dt>
+    <dd th:text="${post.content}"></dd>
+</dl>
+<a th:href="@{/posts}">Back to Post List</a>
+</body>
+</html>

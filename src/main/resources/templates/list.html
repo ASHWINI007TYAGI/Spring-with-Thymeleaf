@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #e44d26;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #e44d26;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #d44b25;
+            color: #fff;
+        }
+
+        a.create-post {
+            background-color: #5cb85c;
+        }
+
+        a.create-post:hover {
+            background-color: #4cae4c;
+        }
+
+        /* New styles for delete button */
+        a.delete-post {
+            background-color: #d9534f;
+        }
+
+        a.delete-post:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+<h2>Post List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.title}"></td>
+        <td>
+            <a th:href="@{/posts/{id}(id=${post.id})}">View</a>
+            <a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit</a>
+
+
+            <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post" style="display:inline;">
+                <input type="submit" value="Delete" class="delete-post"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<a th:href="@{/posts/new}" class="create-post">Create New Post</a>
+</body>
+</html>
